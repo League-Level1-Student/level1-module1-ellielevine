@@ -11,10 +11,19 @@ public class Planet {
      */
     int x, y, width, height;
     int diameter;
+    int distanceFromSun;
+    int orbitalPeriod;
+    Color color;
     
-    public Planet(int diameterPixels) {
+    public Planet(int diameterPixels, int distanceFromSun, int orbitalPeriod, Color color) {
         this.diameter = diameterPixels;
+        this.distanceFromSun = distanceFromSun;
+        this.orbitalPeriod = orbitalPeriod;
+        this.color = color;
     }
+    
+    
+    
 
     public void draw(Graphics g, int numDays) {
         /*
