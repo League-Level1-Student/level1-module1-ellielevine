@@ -56,13 +56,17 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
     Color boardColor = new Color(138, 198, 193);
     Game gameFrame = new Game("Hungry Hungry Hippos");
     boolean startGame = false;
-
+    
+    Hippo L = new Hippo("left", "Lizzie Hippo", Color.pink);
+    Hippo He = new Hippo("right", "Henry Hippo", Color.orange);
+    Hippo Ho = new Hippo("up", "Homer Hippo", Color.green);
+    Hippo Ha = new Hippo("down", "Harry Hippo", Color.yellow);
+    
     /*
      * Create your hippo objects here. The "left" input parameter indicates
      * which side the hippo is drawn.
-     */
-    Hippo myHippoObject = new Hippo("left");
 
+   
     public HungryHungryHippos() {
         gameFrame.setScene(this);
         gameFrame.start();
@@ -96,6 +100,10 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         /*
          * Draw all the hippos here
          */
+       L.draw(g);
+       He.draw(g);
+       Ho.draw(g);
+       Ha.draw(g);
         myHippoObject.draw(g);
         
         if (startGame) {
@@ -123,13 +131,13 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         if (keyCode == KeyEvent.VK_S) {
             startGame = true;
         } else if (keyCode == KeyEvent.VK_1) {
-            myHippoObject.eat();
+            L.eat();
         } else if (keyCode == KeyEvent.VK_2) {
-            
+            He.eat();
         } else if (keyCode == KeyEvent.VK_3) {
-            
+            Ho.eat();
         } else if (keyCode == KeyEvent.VK_4) {
-            
+            Ha.eat();
         }
     }
     
@@ -186,4 +194,10 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
             }
         }
     }
+
+	@Override
+	public void draw(Graphics arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
