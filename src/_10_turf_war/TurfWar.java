@@ -1,6 +1,7 @@
 package _10_turf_war;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 
 import processing.core.PApplet;
 
@@ -20,6 +21,18 @@ public class TurfWar extends PApplet {
         int leftKey;
         int downKey;
         int rightKey;
+        
+        public Player (int x, int y, int speed, int playerSize, int playerColor, int upKey, int leftKey, int downKey, int rightKey) {
+        	this.x = x;
+        	this.y = y;
+        	this.speed = speed;
+        	this.playerSize = playerSize;
+        	this.playerColor = playerColor;
+        	this.upKey = upKey;
+        	this.leftKey = leftKey;
+        	this.downKey = downKey;
+        	this.rightKey = rightKey;
+        }
 
         /*
          * The member variables below do not need to be initialized in the
@@ -36,7 +49,7 @@ public class TurfWar extends PApplet {
              * 2. Draw a rectangle to represent the the Player using its color,
              * coordinates and size.
              */
-            
+            Rectangle rectangle = new Rectangle(x,y, playerSize,playerColor);
         }
 
         void update() {
@@ -50,6 +63,16 @@ public class TurfWar extends PApplet {
              */     
             if (moveUp && y > statsBoardLine) {
                 y-=speed;
+                
+            }
+            else if (moveDown && y < height) {
+            	y += speed;
+            }
+            else if (moveLeft && x>0) {
+            	x-=speed;
+            }
+            else if (moveRight && x<width) {
+            	x+=speed;
             }
             
             /* 
@@ -106,10 +129,10 @@ public class TurfWar extends PApplet {
 
     /*
      * 4. Declare two variables of the Player class called player1 and player2.
-     * Do not initialize them yet.
-     */
+     * Do not initialize them yet.x y speed size color
+     */ 
 
-    
+    Player player1  = new Player(200, 200, 2, 30, Color.BLUE.getRGB(), UP, DOWN, LEFT, RIGHT);
 
     // Do not change these variables
     boolean gameOver = false;
@@ -119,7 +142,8 @@ public class TurfWar extends PApplet {
     final int D = 68;
     final int statsBoardLine = 100;
     final int statsBoardSpacing = 24;
-
+    
+    Player player2 = new Player(200, 200, 2, 30, Color.GREEN.getRGB(), W, A, S, D);
     /*
      * Optional: You can change this if you want a shorter or longer game. Right
      * now the game will run for 30 seconds (30000 milliseconds).
@@ -129,7 +153,7 @@ public class TurfWar extends PApplet {
     @Override
     public void settings() {
         // 5. Set the size for your sketch. Make it at least 300x300.
-       
+       size(400, 400);
     }
 
     @Override
@@ -141,16 +165,16 @@ public class TurfWar extends PApplet {
         ((java.awt.Canvas) surface.getNative()).requestFocus();
 
         // 6. Set the background color.
-
+background(200, 0, 100);
 
         // 7. Call the noStroke Method.
-        
+        noStroke();
         
         /*
          * 8. Initialize the two Player objects. For one use UP, LEFT, DOWN,
          * RIGHT for the keys, for the second use the W,A,S,D final int 
          * variables created above. 
-         * 
+
          * Note: Make sure to place your players' y positions below the statsBoardLine
          * or else they will be hidden behind the game stats.
          * 
@@ -159,7 +183,7 @@ public class TurfWar extends PApplet {
          * will give that player an unfair advantage.
          */
 
-        
+       
     }
 
     /*
